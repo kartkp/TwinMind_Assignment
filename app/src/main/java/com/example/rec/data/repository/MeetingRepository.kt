@@ -7,7 +7,6 @@
 //class MeetingRepository(
 //    private val db: AppDatabase
 //) {
-//
 //    fun observeMeetings(): Flow<List<MeetingEntity>> =
 //        db.meetingDao().observeMeetings()
 //
