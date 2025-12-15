@@ -8,11 +8,11 @@ object ApiClient {
 
     // 🔹 Whisper (Hugging Face)
     private const val WHISPER_BASE_URL =
-        "https://prakharsingh0-wishpermodel.hf.space/"
+        ""
 
     // 🔹 Gemini (Render)
     private const val GEMINI_BASE_URL =
-        "https://twinmind-backend-8kly.onrender.com/"
+        ""
 
     // ---------- Whisper Retrofit ----------
     private val whisperRetrofit: Retrofit by lazy {
