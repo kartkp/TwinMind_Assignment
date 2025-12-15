@@ -14,7 +14,6 @@ data class SummaryResponse(
     val action_items: List<String>,
     val key_points: List<String>
 )
-
 interface SummaryApi {
 
     @POST("analyze") // 👈 NOT /summarize
