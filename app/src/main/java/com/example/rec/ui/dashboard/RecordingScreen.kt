@@ -57,7 +57,8 @@ import java.util.UUID
 
 @Composable
 fun RecordingScreen(
-    onSave: (Meeting) -> Unit
+    onSave: (Meeting) -> Unit,
+    onCancel: () -> Unit = {}
 ) {
     val context = LocalContext.current
 
@@ -97,13 +98,25 @@ fun RecordingScreen(
                 "audio_${UUID.randomUUID()}.m4a"
             )
 
-            recorder = MediaRecorder().apply {
-                setAudioSource(MediaRecorder.AudioSource.MIC)
-                setOutputFormat(MediaRecorder.OutputFormat.MPEG_4)
-                setAudioEncoder(MediaRecorder.AudioEncoder.AAC)
-                setOutputFile(audioFile!!.absolutePath)
-                prepare()
-                start()
+            recorder = if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S) {
+                MediaRecorder(context).apply {
+                    setAudioSource(MediaRecorder.AudioSource.MIC)
+                    setOutputFormat(MediaRecorder.OutputFormat.MPEG_4)
+                    setAudioEncoder(MediaRecorder.AudioEncoder.AAC)
+                    setOutputFile(audioFile!!.absolutePath)
+                    prepare()
+                    start()
+                }
+            } else {
+                @Suppress("DEPRECATION")
+                MediaRecorder().apply {
+                    setAudioSource(MediaRecorder.AudioSource.MIC)
+                    setOutputFormat(MediaRecorder.OutputFormat.MPEG_4)
+                    setAudioEncoder(MediaRecorder.AudioEncoder.AAC)
+                    setOutputFile(audioFile!!.absolutePath)
+                    prepare()
+                    start()
+                }
             }
 
             seconds = 0

@@ -14,7 +14,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.weight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -115,13 +114,15 @@ fun DashboardScreen(
                         title = "Sessions",
                         value = "$totalMeetings",
                         highlight = "today",
-                        icon = { Icon(Icons.Default.Mic, contentDescription = null) }
+                        icon = { Icon(Icons.Default.Mic, contentDescription = null) },
+                        modifier = Modifier.weight(1f)
                     )
                     StatCard(
                         title = "Listening",
                         value = formatDuration(totalSeconds),
                         highlight = "total",
-                        icon = { Icon(Icons.Default.Schedule, contentDescription = null) }
+                        icon = { Icon(Icons.Default.Schedule, contentDescription = null) },
+                        modifier = Modifier.weight(1f)
                     )
                 }
 
@@ -213,10 +214,11 @@ private fun StatCard(
     title: String,
     value: String,
     highlight: String,
-    icon: @Composable () -> Unit
+    icon: @Composable () -> Unit,
+    modifier: Modifier = Modifier
 ) {
     Card(
-        modifier = Modifier.weight(1f),
+        modifier = modifier,
         colors = CardDefaults.cardColors(containerColor = SurfaceHigh),
         shape = RoundedCornerShape(16.dp)
     ) {
