@@ -1,6 +1,6 @@
 # TwinMind
 
-TwinMind is a native Android application designed to record meetings, generate transcriptions, and create AI-powered summaries — all while running seamlessly in the background.
+TwinMind is a native Android application designed to record meetings, generate transcriptions, and create AI-powered summaries all while running seamlessly in the background.
 
 ---
 
